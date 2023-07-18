@@ -1,0 +1,21 @@
+spring.datasource.url: jdbc:h2:file:./camunda-h2-database
+
+camunda.bpm.admin-user:
+  id: demo
+  password: demo
+
+# Nome do microsserviço
+spring:
+  application:
+    name: camunda-process
+
+# Configuração do Eureka Client
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8081/eureka/
+
+# definir uma porta para o microsserviço
+server:
+  port: 0
+
