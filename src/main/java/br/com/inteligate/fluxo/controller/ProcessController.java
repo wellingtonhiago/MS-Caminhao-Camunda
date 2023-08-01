@@ -2,6 +2,9 @@ package br.com.inteligate.fluxo.controller;
 
 import br.com.inteligate.fluxo.dto.TruckDTO;
 import org.camunda.bpm.engine.RuntimeService;
+import org.camunda.bpm.engine.impl.persistence.entity.ProcessInstanceWithVariablesImpl;
+import org.camunda.bpm.engine.runtime.ProcessInstance;
+import org.camunda.bpm.engine.runtime.ProcessInstanceWithVariables;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,13 +21,17 @@ public class ProcessController {
     private RuntimeService runtimeService;
 
     @PostMapping("/startProcess")
-    public String startProcess(@RequestBody TruckDTO request) {
+    public Object startProcess(@RequestBody TruckDTO request) {
 
         Map<String, Object> vars = new HashMap<>();
 
         vars.put("caminhaoId", request.getId());
 
-        runtimeService.startProcessInstanceByKey("process-porto-santos", vars);
-        return "Processo iniciado";
+        //nome balanca
+//        vars.put("balanca", "balancaNome");
+
+        ProcessInstanceWithVariablesImpl pi = (ProcessInstanceWithVariablesImpl) runtimeService.startProcessInstanceByKey("process-porto-santos-3", vars);
+
+        return pi.getVariables();
     }
 }
