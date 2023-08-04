@@ -6,7 +6,6 @@ import br.com.inteligate.fluxo.http.BalancaClient;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import javax.inject.Named;
 
